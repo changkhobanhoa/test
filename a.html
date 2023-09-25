@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Hiển thị hình ảnh từ địa chỉ</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100 p-4 items-center ">
+    <h1 class="text-2xl font-semibold mb-4">Hiển thị hình ảnh từ địa chỉ VKU top 1 tây nguyên nè</h1>
+
+    <div class="  items-center">
+        <input type="text" id="imageUrlInput" placeholder="Nhập địa chỉ hình ảnh" class="w-full p-2 rounded-md border"
+            onkeydown="if(event.keyCode==13) displayImage();" />
+
+        <!-- Khung hình ảnh -->
+        <div id="imageContainer" class="mt-4">
+            <img id="displayedImage" src="" alt="Hình ảnh" class="max-w-md mx-auto block" />
+        </div>
+        <a id="downloadLink" download="" class=" cursor-pointer mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            Tải Xuống
+        </a>
+
+
+    </div>
+
+    <!-- Thanh nhập liệu văn bản -->
+
+    <script>
+        // Hàm để hiển thị hình ảnh
+        function displayImage() {
+            const imageUrlInput = document.getElementById("imageUrlInput").value;
+            const displayedImage = document.getElementById("displayedImage");
+
+            // Gán địa chỉ hình ảnh vào thuộc tính src của thẻ img
+            displayedImage.src = `https://cdn.vku-udn.edu.vn/daotao/sinhvien/${imageUrlInput}.jpg`;
+            console.log(displayedImage.src)
+
+        }
+        function downloadImage() {
+
+            const imageUrlInput = document.getElementById("displayedImage").src;
+            const downloadLink = document.getElementById("downloadLink");
+            // downloadLink.href = imageUrlInput;
+            downloadLink.style.display = "block";
+
+            // Đặt tên tệp tải xuống
+         
+            console.log(imageUrlInput)
+            downloadLink.setAttribute("download", imageUrlInput);
+
+        }
+
+        // Gán sự kiện nhấn cho nút tải xuống
+        document.getElementById("downloadLink").addEventListener("click", downloadImage);
+
+    </script>
+</body>
+
+</html>
